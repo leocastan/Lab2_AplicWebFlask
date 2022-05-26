@@ -41,7 +41,7 @@ def enviar():
             resultado = messagebox.askquestion("Registrar", "¿Está seguro de que desea registrar los datos?")
             #Funcion condicional de confirmacion de registro
             if resultado == "yes":
-                listaTareas.append({'descripcion': descripcion, 'correoElec': correoElec, 'prioridad': prioridad })
+                listaTareas.append({'descripcion': descripcion, 'correoElec': correoElec, 'prioridad': prioridad})
                 return redirect(url_for('home'))
             else:
                 return redirect(url_for('home'))
@@ -88,17 +88,6 @@ def guardar():
                 return redirect(url_for('home'))
             else:
                 return redirect(url_for('home'))
-
-#5. Funcion para borrar registro individuales
-@app.route('/borrarRegistro', methods=['POST'])
-def borrarRegistro():
-    if request.method == 'POST': 
-        #Mensaje de autorizacion de borrado
-        resultado = messagebox.askquestion("Borrar registro", "¿Está seguro de que desea borrar el registro?")
-        return redirect(url_for('home'))
-
-
-
 
 
 # Metodo main del programa
