@@ -59,13 +59,15 @@
         </div>
         <div class="form-group">
             <label>Prioridad</label>
-            <select class="form-control" name="tarea_prioridad">
+            <select class="form-select" size="3" aria-label="size 3 select example" name="tarea_prioridad">
                 <option value="Baja">Baja</option>
                 <option value="Media">Media</option>
                 <option value="Alta">Alta</option>
             </select>
         </div> <br>
-        <input type="submit" value="Registrar" class="btn btn-primary">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <input type="submit" value="Registrar" class="btn btn-primary">
+        </div>
     </form><br>
 
     <!--Controlador 1.1 Tabla para mostrar las tareas-->
@@ -97,16 +99,16 @@
 
     <!--Funcion controlador para borrar registros-->
     <form action="{{url_for('borrar')}}" method="post" class="card-body">
-
-        <button type="submit" class="btn btn-danger mb-2">Borrar registros</button>
-
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-danger mb-2">Borrar registros</button>
+        </div>
     </form>
 
     <!--Funcion controlador para guardar registros en archivo *.pickle-->
     <form action="{{url_for('guardar')}}" method="post" class="card-body">
-
-        <button type="submit" class="btn btn-success">Guardar</button>
-
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-success">Guardar Registros</button>
+        </div>
     </form>
 
 
