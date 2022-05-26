@@ -49,17 +49,17 @@
         <div class="form-group">
             <label>Tarea</label>
             <input type="text" class="form-control" placeholder="Ingrese la descripción de la tarea"
-                name="tareaDescripcion">
+                name="descripcion">
         </div>
         <div class="form-group">
             <label>Correo electrónico</label>
             <input type="email" class="form-control"
-                placeholder="Ingrese el correo electrónico del responsable de la tarea" name="tareaCorreo"
+                placeholder="Ingrese el correo electrónico del responsable de la tarea" name="correoElec"
                 aria-describedby="emailHelp">
         </div>
         <div class="form-group">
             <label>Prioridad</label>
-            <select class="form-select" size="3" aria-label="size 3 select example" name="tareaPrioridad">
+            <select class="form-select" size="3" aria-label="size 3 select example" name="prioridad">
                 <option value="Baja">Baja</option>
                 <option value="Media">Media</option>
                 <option value="Alta">Alta</option>
@@ -88,28 +88,28 @@
             <tr>
                 {% for tarea in listaTareas %}
                 <!--Mostrar la descripción de la tarea-->
-                <th>{{tarea.tareaDescripcion}}</th>
+                <th>{{tarea.descripcion}}</th>
                 <!--Mostrar correo electrónico del responsable-->
-                <th>{{tarea.tareaCorreo}}</th>
+                <th>{{tarea.correoElec}}</th>
                 <!--Mostrar la prioridad de la tarea-->
-                <th>{{tarea.tareaPrioridad}}</th>
+                <th>{{tarea.prioridad}}</th>
             </tr>
             {% endfor %}
         </tbody>
 
     </table>
 
-    <!--Funcion controlador para borrar registros-->
-    <form action="{{url_for('borrar')}}" method="post" class="card-body">
-        <div class="d-grid gap-2 col-6 mx-auto">
-            <button type="submit" class="btn btn-danger mb-2">Borrar registros</button>
-        </div>
-    </form>
-
-    <!--Funcion controlador para guardar registros en archivo *.pickle-->
+       <!--Funcion controlador para guardar registros en archivo *.pickle-->
     <form action="{{url_for('guardar')}}" method="post" class="card-body">
         <div class="d-grid gap-2 col-6 mx-auto">
             <button type="submit" class="btn btn-success">Guardar Registros</button>
+        </div>
+    </form>
+
+     <!--Funcion controlador para borrar registros-->
+     <form action="{{url_for('borrar')}}" method="post" class="card-body">
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn btn-danger mb-2">Borrar registros</button>
         </div>
     </form>
 

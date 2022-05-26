@@ -1,6 +1,7 @@
 #Importar la biblioteca de flask y librerias necesarias
 from tkinter import messagebox
-from flask import Flask, redirect, render_template, request, url_for, flash
+from flask import Flask, redirect, render_template 
+from flask import request, url_for
 import pickle
 
 #Instanciar la aplicación
@@ -25,22 +26,22 @@ def home():
 def enviar():
     #Funcion condicional para enviar los datos del formulario
     if request.method == 'POST':
-        tareaDescripcion = request.form['tareaDescripcion']
-        tareaCorreo = request.form['tareaCorreo']
-        tareaPrioridad = request.form['tareaPrioridad']
+        descripcion = request.form['descripcion']
+        correoElec = request.form['correoElec']
+        prioridad = request.form['prioridad']
         
         #Funcion condicional para no registrar en caso de datos vacios
-        if tareaDescripcion == " " or tareaCorreo == " ":
+        if descripcion == " " or correoElec == " ":
             #Mensaje de alerta de campos faltantes
             messagebox.showwarning("¡Alerta!","Ingrese todos los campos")
             return redirect(url_for('home'))
 
         else:
             #Mensaje de autorizacion de registro
-            resultado = messagebox.askquestion("Registrar", "¿Está seguro que desea registrar los datos?")
+            resultado = messagebox.askquestion("Registrar", "¿Está seguro de que desea registrar los datos?")
             #Funcion condicional de confirmacion de registro
             if resultado == "yes":
-                listaTareas.append({'tareaDescripcion': tareaDescripcion, 'tareaCorreo': tareaCorreo, 'tareaPrioridad': tareaPrioridad })
+                listaTareas.append({'descripcion': descripcion, 'correoElec': correoElec, 'prioridad': prioridad })
                 return redirect(url_for('home'))
             else:
                 return redirect(url_for('home'))
@@ -56,7 +57,7 @@ def borrar():
 
         else:
             #Mensaje de autorizacion de borrado
-            resultado = messagebox.askquestion("Borrar datos", "¿Está seguro que desea borrar los datos?")
+            resultado = messagebox.askquestion("Borrar datos", "¿Está seguro de que desea borrar los datos?")
             #Funcion condicional de confirmacion de borrado
             if resultado == "yes":
                 messagebox.showinfo("Info","Los datos han sido borrados")
@@ -76,7 +77,7 @@ def guardar():
 
         else:
             #Mensaje de autorizacion de guardado
-            resultado = messagebox.askquestion("Guardar registros", "¿Está seguro que desea guardar los datos?")
+            resultado = messagebox.askquestion("Guardar registros", "¿Está seguro de que desea guardar los datos?")
             #Funcion condicional de confirmacion de guardado
             if resultado == "yes":
                 #Funcion de creacion y sobreescritura de archivo *.pickle
