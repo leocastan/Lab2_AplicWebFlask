@@ -76,7 +76,7 @@ def guardar():
 
         else:
             #Mensaje de autorizacion de guardado
-            resultado = messagebox.askquestion("Guardar registros", "¿Está seguro que desea borrar los datos?")
+            resultado = messagebox.askquestion("Guardar registros", "¿Está seguro que desea guardar los datos?")
             #Funcion condicional de confirmacion de guardado
             if resultado == "yes":
                 #Funcion de creacion y sobreescritura de archivo *.pickle
