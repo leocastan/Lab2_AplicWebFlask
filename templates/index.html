@@ -42,24 +42,24 @@
 </head>
 
 <body>
-    <h1>Tareas Pendientes</h1>
+    <h1>Formulario de Registro</h1>
 
     <!--Fomrulario para el ingreso de nuevas tareas tomado de Bootstrap-->
     <form method="post" action="{{url_for('enviar')}}">
         <div class="form-group">
             <label>Tarea</label>
             <input type="text" class="form-control" placeholder="Ingrese la descripción de la tarea"
-                name="tarea_descripcion">
+                name="tareaDescripcion">
         </div>
         <div class="form-group">
             <label>Correo electrónico</label>
             <input type="email" class="form-control"
-                placeholder="Ingrese el correo electrónico del responsable de la tarea" name="tarea_correo"
+                placeholder="Ingrese el correo electrónico del responsable de la tarea" name="tareaCorreo"
                 aria-describedby="emailHelp">
         </div>
         <div class="form-group">
             <label>Prioridad</label>
-            <select class="form-select" size="3" aria-label="size 3 select example" name="tarea_prioridad">
+            <select class="form-select" size="3" aria-label="size 3 select example" name="tareaPrioridad">
                 <option value="Baja">Baja</option>
                 <option value="Media">Media</option>
                 <option value="Alta">Alta</option>
@@ -70,12 +70,14 @@
         </div>
     </form><br>
 
+    <h1>Lista de Tareas</h1>
+
     <!--Controlador 1.1 Tabla para mostrar las tareas-->
     <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th scope="col">Descripción de la tarea</th>
-                <th scope="col">Correo electronico</th>
+                <th scope="col">Correo electrónico</th>
                 <th scope="col">Prioridad</th>
             </tr>
 
@@ -84,13 +86,13 @@
         <tbody>
 
             <tr>
-                {% for tarea in lista_tareas %}
+                {% for tarea in listaTareas %}
                 <!--Mostrar la descripción de la tarea-->
-                <th>{{tarea.tarea_descripcion}}</th>
+                <th>{{tarea.tareaDescripcion}}</th>
                 <!--Mostrar correo electrónico del responsable-->
-                <th>{{tarea.tarea_correo}}</th>
+                <th>{{tarea.tareaCorreo}}</th>
                 <!--Mostrar la prioridad de la tarea-->
-                <th>{{tarea.tarea_prioridad}}</th>
+                <th>{{tarea.tareaPrioridad}}</th>
             </tr>
             {% endfor %}
         </tbody>

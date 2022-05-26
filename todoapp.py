@@ -9,14 +9,14 @@ app = Flask(__name__)
 
 
 #Arreglo para almacenar las tareas
-lista_tareas = []
+listaTareas = []
 
 #1. Funcion controlador que muestra lista actual de tareas pendientes y un formulario para ingresar un nuevo elemento
 #Definicion de la ruta por defecto,
 @app.route('/')
 #Lamar a principal
 def home():
-    return render_template('index.html', lista_tareas = lista_tareas)
+    return render_template('index.html', listaTareas = listaTareas)
 
 #2. Funcion controlador para agregar lista a tarea de pendientes
 #Definicion de la ruta
@@ -25,12 +25,12 @@ def home():
 def enviar():
     #Funcion condicional para enviar los datos del formulario
     if request.method == 'POST':
-        tarea_descripcion = request.form['tarea_descripcion']
-        tarea_correo = request.form['tarea_correo']
-        tarea_prioridad = request.form['tarea_prioridad']
+        tareaDescripcion = request.form['tareaDescripcion']
+        tareaCorreo = request.form['tareaCorreo']
+        tareaPrioridad = request.form['tareaPrioridad']
         
         #Funcion condicional para no registrar en caso de datos vacios
-        if tarea_descripcion == '' or tarea_correo == '':
+        if tareaDescripcion == " " or tareaCorreo == " ":
             #Mensaje de alerta de campos faltantes
             messagebox.showwarning("¡Alerta!","Ingrese todos los campos")
             return redirect(url_for('home'))
@@ -40,7 +40,7 @@ def enviar():
             resultado = messagebox.askquestion("Registrar", "¿Está seguro que desea registrar los datos?")
             #Funcion condicional de confirmacion de registro
             if resultado == "yes":
-                lista_tareas.append({'tarea_descripcion': tarea_descripcion, 'tarea_correo': tarea_correo, 'tarea_prioridad': tarea_prioridad })
+                listaTareas.append({'tareaDescripcion': tareaDescripcion, 'tareaCorreo': tareaCorreo, 'tareaPrioridad': tareaPrioridad })
                 return redirect(url_for('home'))
             else:
                 return redirect(url_for('home'))
@@ -50,7 +50,7 @@ def enviar():
 def borrar():
     if request.method == 'POST': 
         #Funcion condicional para mostrar alerta en caso de no existir     
-        if lista_tareas == []:
+        if listaTareas == []:
             messagebox.showwarning("¡Alerta!","No existen tareas pendientes")
             return redirect(url_for('home'))
 
@@ -60,7 +60,7 @@ def borrar():
             #Funcion condicional de confirmacion de borrado
             if resultado == "yes":
                 messagebox.showinfo("Info","Los datos han sido borrados")
-                lista_tareas.clear()
+                listaTareas.clear()
                 return redirect(url_for('home'))
             else:
                 return redirect(url_for('home'))
@@ -70,7 +70,7 @@ def borrar():
 def guardar():
     if request.method == 'POST': 
         #Funcion condicional para mostrar alerta en caso de no existir     
-        if lista_tareas == []:
+        if listaTareas == []:
             messagebox.showwarning("¡Alerta!","No existen tareas para almacenar")
             return redirect(url_for('home'))
 
@@ -81,7 +81,7 @@ def guardar():
             if resultado == "yes":
                 #Funcion de creacion y sobreescritura de archivo *.pickle
                 with open('Tareas.pickle','wb') as f:
-                    tareas = {'tareas':lista_tareas} 
+                    tareas = {'tareas':listaTareas} 
                     pickle.dump(tareas, f)         
                 messagebox.showinfo("Info","Los datos han sido guardados")
                 return redirect(url_for('home'))
