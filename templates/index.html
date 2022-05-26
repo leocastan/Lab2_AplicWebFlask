@@ -46,7 +46,46 @@
         <input type="submit" value="Registrar" class="btn btn-primary">
     </form><br>
 
-    <!------------------------>
+    <!--Controlador 1.1 Tabla para mostrar las tareas-->
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Descripción de la tarea</th>
+                <th scope="col">Correo electronico</th>
+                <th scope="col">Prioridad</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            <tr>
+                {% for tarea in lista_tareas %}
+                <!--Mostrar la descripción de la tarea-->
+                <th>{{tarea.tarea_descripcion}}</th>
+                <!--Mostrar correo electrónico del responsable-->
+                <th>{{tarea.tarea_correo}}</th>
+                <!--Mostrar la prioridad de la tarea-->
+                <th>{{tarea.tarea_prioridad}}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    <!--Funcion controlador para borrar registros-->
+    <form action="{{url_for('borrar')}}" method="post" class="card-body">
+        
+        <button type="submit" class="btn btn-danger mb-2">Borrar registros</button>
+    
+    </form>
+
+    <!--Funcion controlador para guardar registros-->
+    <form action="{{url_for('guardar')}}" method="post" class="card-body">
+        
+        <button type="submit" class="btn btn-success">Guardar</button>
+    
+    </form>
 
 
 </body>
