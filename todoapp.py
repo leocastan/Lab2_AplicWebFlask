@@ -65,7 +65,28 @@ def borrar():
             else:
                 return redirect(url_for('home'))
 
+# 4. Funcion controlador para guardar registros en archivo *.pickle
+@app.route('/guardar', methods=['POST'])
+def guardar():
+    if request.method == 'POST': 
+        #Funcion condicional para mostrar alerta en caso de no existir     
+        if lista_tareas == []:
+            messagebox.showwarning("¡Alerta!","No existen tareas para almacenar")
+            return redirect(url_for('home'))
 
+        else:
+            #Mensaje de autorizacion de guardado
+            resultado = messagebox.askquestion("Guardar registros", "¿Está seguro que desea borrar los datos?")
+            #Funcion condicional de confirmacion de guardado
+            if resultado == "yes":
+                #Funcion de creacion y sobreescritura de archivo *.pickle
+                with open('Tareas.pickle','wb') as f:
+                    tareas = {'tareas':lista_tareas} 
+                    pickle.dump(tareas, f)         
+                messagebox.showinfo("Info","Los datos han sido guardados")
+                return redirect(url_for('home'))
+            else:
+                return redirect(url_for('home'))
 
 
 # Metodo main del programa
