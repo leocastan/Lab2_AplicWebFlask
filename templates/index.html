@@ -14,15 +14,37 @@
         crossorigin="anonymous"></script>
     <title>Lista de tareas</title>
 
+    <style type="text/css">
+        /*Estilos CSS propios*/
+        body {
+            background: url("https://wallpx.com/image/2021/05/minimalism-paper-airplane.jpg");
+        }
 
-    <!--   ------------------------>
+        footer {
+            position: absolute;
+            bottom: 0;
+            font-family: titulares;
+            font-size: 13px;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        label {
+            color: white;
+        }
+    </style>
+
 
 </head>
 
 <body>
     <h1>Tareas Pendientes</h1>
 
-    <!--Fomrulario para el ingreso de nuevas tareas-->
+    <!--Fomrulario para el ingreso de nuevas tareas tomado de Bootstrap-->
     <form method="post" action="{{url_for('enviar')}}">
         <div class="form-group">
             <label>Tarea</label>
@@ -75,16 +97,16 @@
 
     <!--Funcion controlador para borrar registros-->
     <form action="{{url_for('borrar')}}" method="post" class="card-body">
-        
+
         <button type="submit" class="btn btn-danger mb-2">Borrar registros</button>
-    
+
     </form>
 
-    <!--Funcion controlador para guardar registros-->
+    <!--Funcion controlador para guardar registros en archivo *.pickle-->
     <form action="{{url_for('guardar')}}" method="post" class="card-body">
-        
+
         <button type="submit" class="btn btn-success">Guardar</button>
-    
+
     </form>
 
 

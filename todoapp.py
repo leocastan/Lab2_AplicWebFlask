@@ -65,9 +65,6 @@ def borrar():
             else:
                 return redirect(url_for('home'))
 
-                
-#####
-#####
 
 
 
