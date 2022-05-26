@@ -88,12 +88,19 @@
             <tr>
                 {% for tarea in listaTareas %}
                 <!--Mostrar la descripción de la tarea-->
-                <th>{{tarea.descripcion}}</th>
+                <th>{{tarea.descripcion}}
+                    <form action="{{url_for('borrarRegistro')}}" method="post" class="card-body">
+                        <button type="submit" class="btn btn-outline-warning">Borrar Registro</button>
+                        </div>
+                    </form>
+                    </th>
                 <!--Mostrar correo electrónico del responsable-->
                 <th>{{tarea.correoElec}}</th>
                 <!--Mostrar la prioridad de la tarea-->
                 <th>{{tarea.prioridad}}</th>
             </tr>
+
+                
             {% endfor %}
         </tbody>
 

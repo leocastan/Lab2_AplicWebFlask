@@ -89,6 +89,17 @@ def guardar():
             else:
                 return redirect(url_for('home'))
 
+#5. Funcion para borrar registro individuales
+@app.route('/borrarRegistro', methods=['POST'])
+def borrarRegistro():
+    if request.method == 'POST': 
+        #Mensaje de autorizacion de borrado
+        resultado = messagebox.askquestion("Borrar registro", "¿Está seguro de que desea borrar el registro?")
+        return redirect(url_for('home'))
+
+
+
+
 
 # Metodo main del programa
 if __name__ == '__main__':
